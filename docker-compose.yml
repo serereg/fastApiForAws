@@ -1,0 +1,21 @@
+version: '3.4'
+services:
+  srv:
+    build:
+      context: .
+      target:
+        build
+    image: 'srv:v1.0'
+    env_file:
+      - .env
+    volumes:
+      - "./:/volume/"
+    ports:
+      - "8080:8080"
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.57.0/24
